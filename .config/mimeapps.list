@@ -1,0 +1,8 @@
+[Added Associations]
+text/plain=code-oss.desktop;
+application/x-zerosize=code-oss.desktop;vlc.desktop;firefox.desktop;
+image/gif=firefox.desktop;org.xfce.ristretto.desktop;
+application/json=code-oss.desktop;
+video/mp4=vlc.desktop;
+audio/mpeg=vlc.desktop;
+application/x-desktop=code-oss.desktop;

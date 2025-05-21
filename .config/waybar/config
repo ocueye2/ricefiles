@@ -1,0 +1,104 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "modules-left": [
+    "custom/media",
+    "cava"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "network",
+    "battery",
+    "clock"
+  ],
+  "cava": {
+    "bars": 7,
+"lower_cutoff_freq": 20,
+"higher_cutoff_freq": 16000,
+"framerate": 60,
+    "method": "pipewire",
+    "source": "auto",
+    "stereo": true,
+    "reverse": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+"smoothing": 0,
+"format-icons": [
+  "<span size=\"8000\" rise=\"50\">▁</span> ",
+  "<span size=\"8000\" rise=\"0\">▂</span> ",
+  "<span size=\"8000\" rise=\"50\">▃</span> ",
+  "<span size=\"8000\" rise=\"0\">▄</span> ",
+  "<span size=\"8000\" rise=\"50\">▅</span> ",
+  "<span size=\"8000\" rise=\"0\">▆</span> ",
+  "<span size=\"8000\" rise=\"50\">▇</span> ",
+  "<span size=\"8000\" rise=\"0\">█</span> "
+]
+
+
+
+
+  },
+
+
+  "clock": {
+    "format": "{:%I:%M %p}"
+  },
+  "cpu": {
+    "format": "{icon} {usage}%",
+    "format-icons": [
+      "󰻠",
+      "󰻡",
+      "󰻢",
+      "󰻣",
+      "󰻤",
+      "󰻥",
+      "󰻦",
+      "󰻧",
+      "󰻨",
+      "󰻩"
+    ]
+  },
+  "memory": {
+    "format": " {used}%",
+    "tooltip": true
+  },
+  "network": {
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-disconnected": "󰖪 Disconnected"
+  },
+  "battery": {
+    "format": "󰂄 {capacity}%",
+    "format-icons": {
+      "charging": [
+        "󰂄",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰂉",
+        "󰂊"
+      ],
+      "discharging": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿"
+      ]
+    },
+    "interval": 60
+  },
+  "custom/media": {
+    "exec": "playerctl metadata --format '{{ artist }} - {{ title }}'",
+    "return-type": "text",
+    "interval": 5,
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous"
+  }
+}

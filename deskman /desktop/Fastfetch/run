@@ -1,0 +1,1 @@
+kitty -e bash -c "kitten icat -n --place 50x50@0x0 --align left /home/ocueye/Desktop/fastfetch/gif/video.gif | fastfetch --logo-width 50 --load-config /home/ocueye/.config/fastfetch/config.json --raw -; exec bash"

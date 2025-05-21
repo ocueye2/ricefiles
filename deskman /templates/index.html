@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Wofi Alt</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        input { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 10px; }
+
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .grid-item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .grid-item:hover,
+        .grid-item.selected {
+            background: #eee;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <input autofocus type="text" id="search" placeholder="Type to search...">
+    <div id="grid">
+        {% for item in items %}
+        <div class="grid-item" tabindex="0" onclick="selectItem('{{ item }}')">{{ item }}</div>
+        {% endfor %}
+    </div>
+
+    <script>
+        const searchInput = document.getElementById("search");
+        const gridItems = document.querySelectorAll(".grid-item");
+    
+        searchInput.addEventListener("input", () => {
+            const filter = searchInput.value.toLowerCase();
+<<<<<<< HEAD
+<<<<<<< HEAD
+            setTimeout(function(){
+            gridItems.forEach(item => {
+                item.classList.toggle("hidden", !item.textContent.toLowerCase().includes(filter));
+            });
+            selectedIndex = 0;
+            updateSelection();
+        },1);
+            
+=======
+            gridItems.forEach(item => {
+                item.classList.toggle("hidden", !item.textContent.toLowerCase().includes(filter));
+            });
+>>>>>>> parent of f8d2921 (major updates)
+=======
+            gridItems.forEach(item => {
+                item.classList.toggle("hidden", !item.textContent.toLowerCase().includes(filter));
+            });
+>>>>>>> parent of f8d2921 (major updates)
+        });
+    
+        let selectedIndex = 0;
+        function updateSelection() {
+            const visibleItems = Array.from(gridItems).filter(item => !item.classList.contains("hidden"));
+            gridItems.forEach(item => item.classList.remove("selected"));
+    
+            if (visibleItems.length > 0) {
+                selectedIndex = Math.max(0, Math.min(selectedIndex, visibleItems.length - 1));
+                visibleItems[selectedIndex].classList.add("selected");
+                visibleItems[selectedIndex].scrollIntoView({ block: "nearest" });
+            }
+        }
+    
+        updateSelection();
+    
+        document.addEventListener("keydown", (e) => {
+            const visibleItems = Array.from(gridItems).filter(item => !item.classList.contains("hidden"));
+            if (!visibleItems.length) return;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+            const firstItem = visibleItems[0];
+            const itemWidth = firstItem.offsetWidth + 10; // add gap
+            const cols = Math.floor(grid.offsetWidth / itemWidth);
+
+=======
+    
+            const cols = Math.floor(document.getElementById("grid").offsetWidth / 120);
+    
+>>>>>>> parent of f8d2921 (major updates)
+=======
+    
+            const cols = Math.floor(document.getElementById("grid").offsetWidth / 120);
+    
+>>>>>>> parent of f8d2921 (major updates)
+            if (["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
+                e.preventDefault(); // Prevent cursor from moving in input
+    
+                if (e.key === "ArrowRight") {
+                    selectedIndex = (selectedIndex + 1) % visibleItems.length;
+                } else if (e.key === "ArrowLeft") {
+                    selectedIndex = (selectedIndex - 1 + visibleItems.length) % visibleItems.length;
+                } else if (e.key === "ArrowDown") {
+<<<<<<< HEAD
+<<<<<<< HEAD
+                    selectedIndex = Math.min(selectedIndex + cols, visibleItems.length - 1) + 0;
+                } else if (e.key === "ArrowUp") {
+                    selectedIndex = Math.min(selectedIndex - cols, visibleItems.length - 1) - 0;
+                } else if (e.key === "Enter") {
+                    selectItem(visibleItems[selectedIndex].textContent.trim());
+                    
+=======
+                    selectedIndex = (selectedIndex + cols) % visibleItems.length;
+                } else if (e.key === "ArrowUp") {
+                    selectedIndex = (selectedIndex - cols + visibleItems.length) % visibleItems.length;
+                } else if (e.key === "Enter") {
+                    selectItem(visibleItems[selectedIndex].textContent);
+                    window.close()
+>>>>>>> parent of f8d2921 (major updates)
+=======
+                    selectedIndex = (selectedIndex + cols) % visibleItems.length;
+                } else if (e.key === "ArrowUp") {
+                    selectedIndex = (selectedIndex - cols + visibleItems.length) % visibleItems.length;
+                } else if (e.key === "Enter") {
+                    selectItem(visibleItems[selectedIndex].textContent);
+                    window.close()
+>>>>>>> parent of f8d2921 (major updates)
+                    return;
+                }
+    
+                updateSelection();
+            }
+        });
+    
+        function selectItem(item) {
+<<<<<<< HEAD
+    fetch("/select", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ item })
+    }).then(() => {
+        window.close();
+    });
+}
+
+
+
+=======
+            fetch("/select", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({item})
+            });
+        }
+<<<<<<< HEAD
+>>>>>>> parent of f8d2921 (major updates)
+=======
+>>>>>>> parent of f8d2921 (major updates)
+    </script>
+    
+</body>
+</html>
